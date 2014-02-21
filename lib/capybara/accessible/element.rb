@@ -1,22 +1,9 @@
 module Capybara
   module Node
     class Element < Base
-      include Capybara::Accessible::Auditor
-
       def click
         synchronize { base.click }
-        begin
-          @session.driver.browser.switch_to.alert
-          puts "Skipping accessibility audit: Modal dialog present"
-        rescue ::Selenium::WebDriver::Error::NoAlertOpenError, ::NoMethodError
-          if Capybara.current_driver == :accessible && audit_failures.any?
-            if Capybara::Accessible::Auditor.log_level == :warn
-              puts failure_messages
-            else
-              raise Capybara::Accessible::InaccessibleError, failure_messages
-            end
-          end
-        end
+        Capybara::Accessible::Auditor::Node.new(@session).audit!
       end
     end
   end
