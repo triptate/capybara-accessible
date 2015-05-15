@@ -32,7 +32,7 @@ module Capybara
 
     class WebkitDriverAdapter
       def modal_dialog_present?(driver)
-        driver.alert_messages.any?
+        false
       end
 
       def failures_script
