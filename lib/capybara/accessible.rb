@@ -1,6 +1,6 @@
 require 'capybara'
 require 'capybara/accessible/auditor'
-require 'capybara/accessible/element'
+require 'capybara/accessible/capybara_extensions'
 require 'capybara/accessible/driver_extensions'
 require "capybara/accessible/version"
 require "capybara/accessible/railtie" if defined?(Rails)

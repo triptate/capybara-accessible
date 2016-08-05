@@ -1,8 +1,8 @@
 module Capybara
-  module Node
-    class Element < Base
+  module Accessible
+    module Element
       def click
-        synchronize { base.click }
+        super
         Capybara::Accessible::Auditor::Node.new(@session).audit!
       end
     end
