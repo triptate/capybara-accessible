@@ -2,6 +2,9 @@ require 'rspec'
 require 'capybara'
 require 'capybara/spec/spec_helper'
 require 'capybara/accessible'
+require 'capybara/poltergeist'
+require 'capybara/webkit'
+
 require 'accessible_app'
 
 RSpec.configure do |c|
