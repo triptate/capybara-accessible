@@ -80,8 +80,8 @@ module Capybara::Accessible
 
     def log_level_response
       @log_level_response ||= {
-          warn: ->(messages) { puts messages },
-          error: ->(messages) { raise Capybara::Accessible::InaccessibleError, failure_messages }
+        warn: ->(messages) { puts messages },
+        error: ->(messages) { raise Capybara::Accessible::InaccessibleError, failure_messages }
       }
     end
 
