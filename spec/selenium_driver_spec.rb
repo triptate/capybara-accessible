@@ -41,7 +41,7 @@ describe "Using selenium driver" do
       end
 
       it 'puts to stdout and does not raise an error' do
-        $stdout.should_receive(:puts)
+        expect($stdout).to receive(:puts)
         expect { @session.visit('/inaccessible') }.to_not raise_error
       end
     end
