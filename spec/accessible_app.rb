@@ -1,3 +1,5 @@
+require 'capybara/spec/test_app'
+
 class AccessibleApp < TestApp
   get '/accessible' do
     '<form><label for="foo">Foo</label>' +
