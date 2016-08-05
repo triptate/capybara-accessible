@@ -104,3 +104,8 @@ If you are commenting on the audit rules and failure messages, please check out 
 ## Contributing
 
 NOTE: axs_testing.js is a generated file from [Google's Accessibility Developer Tools](https://github.com/GoogleChrome/accessibility-developer-tools). If you'd like to contribute to the audit rules, please fork their Github project.
+
+## License
+
+Copyright © 2013–2016 [Case Commons, Inc](http://casecommons.org).
+Licensed under the MIT license, see [LICENSE](/LICENSE) file.
