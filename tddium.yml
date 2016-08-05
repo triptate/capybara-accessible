@@ -1,7 +1,0 @@
-:tddium:
-  :ruby_version: "ruby-2.0.0-p195"
-  :test_pattern:
-    - spec/**_spec.rb
-  :firefox: "10.0.5esr"
-  :hooks:
-    :pre: /bin/true
