@@ -31,6 +31,7 @@ end
 
 Capybara.register_driver :accessible do |app|
   puts "DEPRECATED: Please register this driver as 'accessible_selenium'"
+  Capybara::Accessible.driver.wrap(Capubara::Selenium::Driver).new(app)
   driver = Capybara::Selenium::Driver.new(app)
   adaptor = Capybara::Accessible::SeleniumDriverAdapter.new
   Capybara::Accessible.setup(driver, adaptor)
