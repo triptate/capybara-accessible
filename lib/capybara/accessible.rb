@@ -95,7 +95,6 @@ Capybara.register_driver :accessible do |app|
   Capybara::Accessible.setup(driver, adaptor)
 end
 
-
 Capybara.register_driver :accessible_selenium do |app|
   driver = Capybara::Selenium::Driver.new(app)
   adaptor = Capybara::Accessible::SeleniumDriverAdapter.new

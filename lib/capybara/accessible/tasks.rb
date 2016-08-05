@@ -3,7 +3,6 @@ require 'rake'
 require 'capybara/accessible'
 
 namespace :capybara_accessible do
-
   desc 'Report total number of integration tests that are accessible/inaccessible'
   task :report_inaccessible_tests do
     directories_to_exclude = ['features/support']

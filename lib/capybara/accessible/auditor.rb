@@ -16,6 +16,7 @@ module Capybara::Accessible
       end
 
       private
+
       def modal_dialog_present?
         Capybara::Accessible.driver_adapter.modal_dialog_present?(driver)
       end
@@ -27,7 +28,7 @@ module Capybara::Accessible
       end
     end
 
-    class <<self
+    class << self
       def exclusions=(rules)
         @exclusions = rules
       end
@@ -74,6 +75,7 @@ module Capybara::Accessible
     end
 
     private
+
     attr_reader :driver
 
     def log_level_response
@@ -126,21 +128,21 @@ module Capybara::Accessible
 
     def mapping
       @mapping ||= {
-          'AX_ARIA_01' => 'badAriaRole',
-          'AX_ARIA_02' => 'nonExistentAriaLabelledbyElement',
-          'AX_ARIA_03' => 'requiredAriaAttributeMissing',
-          'AX_ARIA_04' => 'badAriaAttributeValue',
-          'AX_TEXT_01' => 'controlsWithoutLabel',
-          'AX_TEXT_02' => 'imagesWithoutAltText',
-          'AX_TITLE_01' => 'pageWithoutTitle',
-          'AX_IMAGE_01' => 'elementsWithMeaningfulBackgroundImage',
-          'AX_FOCUS_01' => 'focusableElementNotVisibleAndNotAriaHidden',
-          'AX_FOCUS_02' => 'unfocusableElementsWithOnClick',
-          'AX_COLOR_01' => 'lowContrastElements',
-          'AX_VIDEO_01' => 'videoWithoutCaptions',
-          'AX_AUDIO_01' => 'audioWithoutControls'
-          # 'AX_TITLE_01' => 'linkWithUnclearPurpose', # This has a duplicate name
-          # 'AX_ARIA_05' => '', # This has no rule associated with it
+        'AX_ARIA_01' => 'badAriaRole',
+        'AX_ARIA_02' => 'nonExistentAriaLabelledbyElement',
+        'AX_ARIA_03' => 'requiredAriaAttributeMissing',
+        'AX_ARIA_04' => 'badAriaAttributeValue',
+        'AX_TEXT_01' => 'controlsWithoutLabel',
+        'AX_TEXT_02' => 'imagesWithoutAltText',
+        'AX_TITLE_01' => 'pageWithoutTitle',
+        'AX_IMAGE_01' => 'elementsWithMeaningfulBackgroundImage',
+        'AX_FOCUS_01' => 'focusableElementNotVisibleAndNotAriaHidden',
+        'AX_FOCUS_02' => 'unfocusableElementsWithOnClick',
+        'AX_COLOR_01' => 'lowContrastElements',
+        'AX_VIDEO_01' => 'videoWithoutCaptions',
+        'AX_AUDIO_01' => 'audioWithoutControls'
+        # 'AX_TITLE_01' => 'linkWithUnclearPurpose', # This has a duplicate name
+        # 'AX_ARIA_05' => '', # This has no rule associated with it
       }
     end
 
