@@ -10,10 +10,10 @@ module Capybara
     class SeleniumDriverAdapter
       def modal_dialog_present?(driver)
         begin
-          driver.browser.switch_to.alert
-          true
-        rescue ::Selenium::WebDriver::Error::NoAlertOpenError, ::NoMethodError
+          @browser.navigate.to("about:blank")
           false
+        rescue ::Selenium::WebDriver::Error::UnhandledAlertError
+          true
         end
       end
 
