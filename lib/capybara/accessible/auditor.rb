@@ -84,9 +84,13 @@ module Capybara::Accessible
     end
 
     def failures?
-      failures = run_script(perform_audit_script + driver_adaptor.failures_script)
+      begin
+        failures = run_script(perform_audit_script + driver_adaptor.failures_script)
 
-      Array(failures).any?
+        Array(failures).any?
+      rescue ::Selenium::WebDriver::Error::UnhandledAlertError
+        false
+      end
     end
 
     def failure_messages
