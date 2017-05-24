@@ -1,15 +1,6 @@
 module Capybara::Accessible
   module Adapters
     class Selenium
-      def modal_dialog_present?(driver)
-        begin
-          driver.browser.navigate.to('about:blank')
-          false
-        rescue ::Selenium::WebDriver::Error::UnhandledAlertError
-          true
-        end
-      end
-
       def failures_script
         'return axs.Audit.auditResults(results).getErrors();'
       end
@@ -20,6 +11,9 @@ module Capybara::Accessible
 
       def run_javascript(driver, script)
         driver.execute_script(script)
+      rescue ::Selenium::WebDriver::Error::UnhandledAlertError
+        puts 'Skipping accessibility audit: Modal dialog present'
+        nil
       end
     end
   end

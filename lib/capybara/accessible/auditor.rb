@@ -46,9 +46,7 @@ module Capybara::Accessible
 
     def audit!
       return if Auditor.disabled?
-      if @driver.accessible.modal_dialog_present?(@driver)
-        puts 'Skipping accessibility audit: Modal dialog present'
-      elsif failures?
+      if failures?
         log_level_response[Capybara::Accessible::Auditor.log_level].call(failure_messages)
       end
     end

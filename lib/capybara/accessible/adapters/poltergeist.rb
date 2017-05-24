@@ -1,10 +1,6 @@
 module Capybara::Accessible
   module Adapters
     class Poltergeist
-      def modal_dialog_present?(driver)
-        false
-      end
-
       def failures_script
         'return axs.Audit.auditResults(results).getErrors()'
       end
