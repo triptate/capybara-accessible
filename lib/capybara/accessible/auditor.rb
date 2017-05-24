@@ -2,32 +2,6 @@ module Capybara::Accessible
   class InaccessibleError < Capybara::CapybaraError; end
 
   class Auditor
-    class Node < self
-      def initialize(session)
-        @driver = session.driver
-      end
-
-      def audit!
-        if modal_dialog_present?
-          puts 'Skipping accessibility audit: Modal dialog present'
-        else
-          super
-        end
-      end
-
-      private
-
-      def modal_dialog_present?
-        Capybara::Accessible.driver_adapter.modal_dialog_present?(driver)
-      end
-    end
-
-    class Driver < self
-      def initialize(driver)
-        @driver = driver
-      end
-    end
-
     class << self
       def exclusions=(rules)
         @exclusions = rules
@@ -66,17 +40,20 @@ module Capybara::Accessible
       end
     end
 
+    def initialize(driver)
+      @driver = driver
+    end
+
     def audit!
       return if Auditor.disabled?
-
-      if failures?
+      if @driver.accessible.modal_dialog_present?(@driver)
+        puts 'Skipping accessibility audit: Modal dialog present'
+      elsif failures?
         log_level_response[Capybara::Accessible::Auditor.log_level].call(failure_messages)
       end
     end
 
     private
-
-    attr_reader :driver
 
     def log_level_response
       @log_level_response ||= {
@@ -86,13 +63,13 @@ module Capybara::Accessible
     end
 
     def failures?
-      failures = run_script(perform_audit_script + driver_adaptor.failures_script)
+      failures = run_script(perform_audit_script + @driver.accessible.failures_script)
 
       Array(failures).any?
     end
 
     def failure_messages
-      result = run_script(perform_audit_script + driver_adaptor.create_report_script)
+      result = run_script(perform_audit_script + @driver.accessible.create_report_script)
       "Found at #{page_url} \n\n#{result}"
     end
 
@@ -147,15 +124,11 @@ module Capybara::Accessible
     end
 
     def page_url
-      driver.current_url
+      @driver.current_url
     end
 
     def run_script(script)
-      driver_adaptor.run_javascript(driver, script)
-    end
-
-    def driver_adaptor
-      Capybara::Accessible.driver_adapter
+      @driver.accessible.run_javascript(@driver, script)
     end
   end
 end

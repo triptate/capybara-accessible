@@ -5,7 +5,7 @@ module Capybara::Accessible
     module Element
       def click
         super
-        Auditor::Node.new(@session).audit!
+        Auditor.new(@session.driver).audit!
       end
     end
   end
