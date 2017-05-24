@@ -19,7 +19,7 @@ Gem::Specification.new do |spec|
 
   spec.add_dependency 'capybara', '~> 2.0'
 
-  spec.add_development_dependency 'capybara-webkit'
+  spec.add_development_dependency 'capybara-webkit', '~> 1.11.1'
   spec.add_development_dependency 'poltergeist'
   spec.add_development_dependency 'rake'
   spec.add_development_dependency 'rspec'
