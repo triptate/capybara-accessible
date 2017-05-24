@@ -3,8 +3,8 @@ require 'capybara/accessible/adapters'
 require 'capybara/accessible/auditor'
 require 'capybara/accessible/capybara_extensions'
 require 'capybara/accessible/driver_extensions'
-require "capybara/accessible/version"
-require "capybara/accessible/railtie" if defined?(Rails)
+require 'capybara/accessible/version'
+require 'capybara/accessible/railtie' if defined?(Rails)
 
 module Capybara
   module Accessible
