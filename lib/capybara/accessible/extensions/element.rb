@@ -5,7 +5,10 @@ module Capybara::Accessible
     module Element
       def click
         super
-        Auditor.new(@session.driver).audit!
+        driver = @session.driver
+        if driver.respond_to?(:accessible)
+          Auditor.new(@session.driver).audit!
+        end
       end
     end
   end
