@@ -9,7 +9,7 @@ module Capybara::Accessible
 
       def audit!
         if modal_dialog_present?
-          puts "Skipping accessibility audit: Modal dialog present"
+          puts 'Skipping accessibility audit: Modal dialog present'
         else
           super
         end
