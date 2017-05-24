@@ -1,7 +1,7 @@
 require 'capybara'
 require 'capybara/accessible/auditor'
 require 'capybara/accessible/extensions/element'
-require 'capybara/accessible/driver_extensions'
+require 'capybara/accessible/extensions/driver'
 require 'capybara/accessible/version'
 require 'capybara/accessible/railtie' if defined?(Rails)
 
@@ -21,7 +21,7 @@ module Capybara
 
       def setup(driver, adaptor)
         @driver_adapter = adaptor
-        driver.extend(Capybara::Accessible::DriverExtensions)
+        driver.extend(Capybara::Accessible::Extensions::Driver)
         driver
       end
     end
