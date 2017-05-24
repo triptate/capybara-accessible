@@ -23,6 +23,6 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency 'poltergeist'
   spec.add_development_dependency 'rake'
   spec.add_development_dependency 'rspec'
-  spec.add_development_dependency 'selenium-webdriver'
+  spec.add_development_dependency 'selenium-webdriver', '~> 2.0'
   spec.add_development_dependency 'sinatra'
 end
