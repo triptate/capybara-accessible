@@ -1,3 +1,5 @@
+require 'rails/railtie'
+
 module Capybara
   module Accessible
     class Railtie < Rails::Railtie
