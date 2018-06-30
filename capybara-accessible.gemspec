@@ -17,7 +17,7 @@ Gem::Specification.new do |spec|
   spec.test_files    = spec.files.grep(%r{^(test|spec|features)/})
   spec.require_paths = ['lib']
 
-  spec.add_dependency 'capybara', '~> 2.0'
+  spec.add_dependency 'capybara', '>= 2.0'
 
   spec.add_development_dependency 'capybara-webkit', '~> 1.11.1'
   spec.add_development_dependency 'poltergeist'
