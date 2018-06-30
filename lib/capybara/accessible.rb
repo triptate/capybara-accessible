@@ -79,8 +79,8 @@ module Capybara
         @driver_adapter
       end
 
-      def setup(driver, adaptor)
-        @driver_adapter = adaptor
+      def setup(driver, adapter)
+        @driver_adapter = adapter
         driver.extend(Capybara::Accessible::DriverExtensions)
         driver
       end
@@ -91,24 +91,24 @@ end
 Capybara.register_driver :accessible do |app|
   puts "DEPRECATED: Please register this driver as 'accessible_selenium'"
   driver = Capybara::Selenium::Driver.new(app)
-  adaptor = Capybara::Accessible::SeleniumDriverAdapter.new
-  Capybara::Accessible.setup(driver, adaptor)
+  adapter = Capybara::Accessible::SeleniumDriverAdapter.new
+  Capybara::Accessible.setup(driver, adapter)
 end
 
 Capybara.register_driver :accessible_selenium do |app|
   driver = Capybara::Selenium::Driver.new(app)
-  adaptor = Capybara::Accessible::SeleniumDriverAdapter.new
-  Capybara::Accessible.setup(driver, adaptor)
+  adapter = Capybara::Accessible::SeleniumDriverAdapter.new
+  Capybara::Accessible.setup(driver, adapter)
 end
 
 Capybara.register_driver :accessible_webkit do |app|
   driver = Capybara::Webkit::Driver.new(app)
-  adaptor = Capybara::Accessible::WebkitDriverAdapter.new
-  Capybara::Accessible.setup(driver, adaptor)
+  adapter = Capybara::Accessible::WebkitDriverAdapter.new
+  Capybara::Accessible.setup(driver, adapter)
 end
 
 Capybara.register_driver :accessible_poltergeist do |app|
   driver = Capybara::Poltergeist::Driver.new(app)
-  adaptor = Capybara::Accessible::PoltergeistDriverAdapter.new
-  Capybara::Accessible.setup(driver, adaptor)
+  adapter = Capybara::Accessible::PoltergeistDriverAdapter.new
+  Capybara::Accessible.setup(driver, adapter)
 end

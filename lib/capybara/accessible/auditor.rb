@@ -86,13 +86,13 @@ module Capybara::Accessible
     end
 
     def failures?
-      failures = run_script(perform_audit_script + driver_adaptor.failures_script)
+      failures = run_script(perform_audit_script + driver_adapter.failures_script)
 
       Array(failures).any?
     end
 
     def failure_messages
-      result = run_script(perform_audit_script + driver_adaptor.create_report_script)
+      result = run_script(perform_audit_script + driver_adapter.create_report_script)
       "Found at #{page_url} \n\n#{result}"
     end
 
@@ -151,10 +151,10 @@ module Capybara::Accessible
     end
 
     def run_script(script)
-      driver_adaptor.run_javascript(driver, script)
+      driver_adapter.run_javascript(driver, script)
     end
 
-    def driver_adaptor
+    def driver_adapter
       Capybara::Accessible.driver_adapter
     end
   end
